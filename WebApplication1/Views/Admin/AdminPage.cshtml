@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WebApplication1.Models.Product>
+
+@{
+    ViewData["Title"] = "Admin Page";
+}
+
+<div class="text-center">
+    <center>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                @ViewBag.CurrentCategory
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                @foreach (var item in ViewBag.Categories)
+                {
+                    <a class="dropdown-item" asp-controller="Admin" asp-action="AdminPage" asp-route-id="@item.Id">@item.Name</a>
+                }
+            </div>
+        </div>
+
+        <a role="button" class="btn btn-outline-secondary float-right" asp-controller="Admin" asp-action="AddProduct">Add New</a>
+        <br />
+        <table>
+            <tr>
+                <th>Portrait</th>
+                <th>Name</th>
+                <th></th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><img width="200" height="200" src=@item.ImgUrl /></td>
+                    <td>@item.Name</td>
+                    <td><a role="button" class="btn btn-outline-info" asp-controller="Admin" asp-action="EditProduct" asp-route-id="@item.ProductId">Edit</a></td>
+                    <td><a role="button" class="btn btn-outline-danger" asp-controller="Admin" asp-action="DeleteProduct" asp-route-id="@item.ProductId">Delete</a></td>
+
+                </tr>
+            }
+        </table>
+    </center>
+</div>

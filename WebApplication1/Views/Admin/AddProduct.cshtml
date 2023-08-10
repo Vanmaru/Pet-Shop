@@ -1,0 +1,68 @@
+﻿@model WebApplication1.Models.Product
+
+@{
+    ViewData["Title"] = "Add Page";
+}
+
+<div class="text-center">
+    <form class="form-group" asp-controller="Admin" asp-action="AddProduct" method="post">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" asp-for="Name">Product Name: </label>
+            <div>
+                <input class="form-control" asp-for="Name" />
+                <span asp-validation-for="Name"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" asp-for="Price">Product Price: </label>
+            <div>
+                <input class="form-control" asp-for="Price" />
+                <span asp-validation-for="Price"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" asp-for="ImgUrl">Picture Name: </label>
+            <div>
+                <input type="file" class="form-control-file" asp-for="ImgUrl">
+                <span asp-validation-for="ImgUrl"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" asp-for="Material">Матеріал: </label>
+            <div>
+                <textarea class="form-control" rows="1" asp-for="Material"></textarea>
+                <span asp-validation-for="Material"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" asp-for="Description">Description: </label>
+            <div>
+                <textarea class="form-control" rows="8" asp-for="Description"></textarea>
+                <span asp-validation-for="Description"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" asp-for="CategoryId">Кому: </label>
+            <div>
+                <select class="form-control form-control-lg" asp-for="CategoryId" id="CategoryId">
+                    <option value="1" selected="selected">Для собаки</option>
+                    <option value="2">Для кота</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" asp-for="KindId">Вид: </label>
+            <div>
+                <select class="form-control form-control-lg" asp-for="KindId" id="KindId">
+                    <option value="1" selected="selected">Нашийники</option>
+                    <option value="2">Шлеї</option>
+                    <option value="3">Повідці</option>
+                    <option value="4">Повідці-рулетки</option>
+                    <option value="5">Одяг</option>
+                    <option value="6">Іграшки</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn btn-outline-secondary">Save</button>
+    </form>
+</div>

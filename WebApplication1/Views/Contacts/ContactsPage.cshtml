@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Контакти";
+}
+<div class="container">
+    <h1 class="text-center mb-3">Контакти</h1>
+    <div class="row">
+        <div class="col-10">
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-4">
+                    <ul class="list-unstyled">
+                        <li>проспект Науки, 9</li>
+                        <li>Харків, Україна, 61000</li>
+                        <li><a href="tel:+380-6666206">+380-66 66 206</a></li>
+                        <li>
+                            <a href="mailto:info@happypaws.ua">info@happypaws.ua</a>
+                        </li>
+                        <li>
+                            Режим роботи Call-центру:
+                        </li>
+                        <li>
+                            Понеділок - П'ятниця з 09:00 до 20:00
+                        </li>
+                        <li>
+                            Субота - Неділя з 11:00 до 16:00
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-6">
+                    <form class="breakable contactUsForm " data-date-format="d/m/Y" data-click-action="thankYouMessage" novalidate="novalidate">
+                        <div class="preview-highlighter">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" name="contact_name" placeholder="Name" class="form-control" required="" data-msg-required="This field is required.">
+                                    </div>
+                                </div> <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" name="contact_phone" placeholder="Phone" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="contact_email" placeholder="Email address" class="form-control s123-force-ltr" required="" data-msg-required="This field is required." data-rule-email="true" data-msg-email="Please enter a valid email.">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" name="contact_message" placeholder="Message" style="min-height: 100px;"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success btn-block" aria-label="Contact Us">Contact Us</button>
+                        </div>
+                        <input type="hidden" name="w" value="">
+                        <input type="hidden" name="websiteID" value="7891689">
+                        <input type="hidden" name="moduleID" value="5700eba5d89af">
+                        <input type="hidden" name="layout" value="1">
+                        <input type="hidden" name="recaptchaToken" value="">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

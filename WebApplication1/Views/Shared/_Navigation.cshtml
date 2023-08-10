@@ -1,0 +1,62 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 d-flex justify-content-center">
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1 d-flex">
+                    <li class="nav-item flex-grow-1 ml-1 mr-4">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Головна</a>
+                    </li>
+                    <li class="nav-item dropdown mr-4">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Цуцику
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @foreach (var item in ViewBag.Kinds)
+                            {
+                                <a class="dropdown-item" asp-controller="Catalog" asp-action="CatalogPage" asp-route-category="1" asp-route-kind="@item.Name">@item.Name</a>
+                            }
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown mr-4">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Коту
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @foreach (var item in ViewBag.Kinds)
+                            {
+                                <a class="dropdown-item" asp-controller="Catalog" asp-action="CatalogPage" asp-route-category="2" asp-route-kind="@item.Name">@item.Name</a>
+                            }
+                        </div>
+                    </li>
+                    <li class="nav-item mr-4">
+                        <a class="nav-link text-dark text-nowrap" asp-area="" asp-controller="Trends" asp-action="TrendsPage">В тренді</a>
+                    </li>
+                    <li class="nav-item mr-4">
+                        <form class="form-inline flex-nowrap" action="@Url.Action("SearchPage", "Catalog")" method="get">
+                            <input class="form-control mr-sm-2" type="search" name="searchQuery" placeholder="Пошук по сайту" aria-label="Пошук по сайту">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" formaction="@Url.Action("SearchPage", "Catalog")?searchQuery={{value}}">Знайти</button>
+                        </form>
+                    </li>
+                    <li class="nav-item mr-5">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Contacts" asp-action="ContactsPage">Контакти</a>
+                    </li>
+                    <li class="nav-item ml-5">
+                        <a class="nav-link text-dark" style="padding:0%;" asp-area="" asp-controller="Cart" asp-action="CartPage">
+                            <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="40%" height="40%"><path d="M22.713,4.077A2.993,2.993,0,0,0,20.41,3H4.242L4.2,2.649A3,3,0,0,0,1.222,0H1A1,1,0,0,0,1,2h.222a1,1,0,0,1,.993.883l1.376,11.7A5,5,0,0,0,8.557,19H19a1,1,0,0,0,0-2H8.557a3,3,0,0,1-2.82-2h11.92a5,5,0,0,0,4.921-4.113l.785-4.354A2.994,2.994,0,0,0,22.713,4.077ZM21.4,6.178l-.786,4.354A3,3,0,0,1,17.657,13H5.419L4.478,5H20.41A1,1,0,0,1,21.4,6.178Z" /><circle cx="7" cy="22" r="2" /><circle cx="17" cy="22" r="2" /></svg>
+                        </a>
+                    </li>
+                </ul>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img class="img" width="115px" src="~/images/HappyPaws.png" alt="logo image" /></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CartItem>//List<CartItem>
+@{
+    ViewData["Title"] = "Кошик";
+}
+
+<h2>Shopping Cart</h2>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Назва</th>
+                <th>Вид</th>
+                <th>Ціна</th>
+                <th>Кількість</th>
+                <th>Усього</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><img src="@item.Product.ImgUrl" style="width:100px"/></td>
+                    <td>@item.Product.Name</td>
+                    <td>@item.Kind @item.Category</td>
+                    <td>@item.Product.Price</td>
+                    <td>
+                        <form asp-action="UpdateCart" asp-route-id="@item.ProductId" method="post">
+                            <div class="input-group">
+                                <input type="number" class="form-control" name="quantity" value="@item.Quantity" />
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-default">Update</button>
+                                </span>
+                            </div>
+                        </form>
+                    </td>
+                    <td>@(item.Product.Price * item.Quantity)</td>
+                    <td>
+                        <form asp-action="RemoveFromCart" asp-route-id="@item.ProductId" method="post">
+                            <button type="submit" class="btn btn-danger">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="5"></td>
+                <td>Total: @Model.Sum(item => item.Product.Price * item.Quantity)</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Your cart is empty.</p>
+}

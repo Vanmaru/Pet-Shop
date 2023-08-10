@@ -1,0 +1,72 @@
+﻿@model WebApplication1.Models.DetailViewModel
+@{
+    ViewData["Title"] = "Detail Page";
+}
+
+<div class="text-center mb-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-5">
+                <div class="card">
+                    <img src="@Model.Product.ImgUrl" class="card-img-top" alt="Product Image">
+                </div>
+            </div>
+            <div class="col-7">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">@Model.Product.Name</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Ціна: @Model.Product.Price грн</h6>
+                        <p class="card-text">Матеріал: @Model.Product.Material</p>
+                        <a class="btn btn-success" href="@Url.Action("AddToCart", "Cart", new { name = Model.Product.Name, category=Model.Product.CategoryId, kind=Model.Product.KindId })">
+                            В кошик
+                        </a>
+                    </div>
+                    <div class="card-footer">
+                        <p class="card-text">Опис: @Model.Product.Description</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div>
+                <form method="post">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-secondary" type="submit">Залишити відгук</button>
+                        </div>
+                        <input name="Product" type="hidden" value="@Model.Product.ProductId" />
+                        <input name="CommentMessage" type="text" class="form-control" placeholder="Add you comments here and press submit" aria-label="" aria-describedby="basic-addon1">
+                    </div>
+                </form>
+                <h6 class="card-subtitle mb-2 text-muted">Відгуки</h6>
+                <ul class="list-group">
+                    @foreach (var item in Model.ProductComments)
+                    {
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-5">
+                                    <img src="http://placehold.it/80" class="img-circle img-responsive" alt="">
+                                </div>
+                                <div class="col-7">
+                                    <div>
+                                        <h6>
+                                            User
+                                        </h6>
+                                        <div class="mic-info">
+                                            By: <a href="#">User</a>
+                                        </div>
+                                    </div>
+                                    <div class="comment-text">
+                                        @item.CommentMessage
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
